@@ -7,11 +7,11 @@ class User extends Component {
     render() {
         let list = [
             {
-                name: "renata",
+                nome: "renata",
                 email: "renata@gmail.com"
             },
             {
-                name: "maykon",
+                nome: "maykon",
                 email: "maykon@gmail.com"
             }
         ]
@@ -29,7 +29,7 @@ class User extends Component {
                         return <tbody>
                             <tr>
                                 <td>
-                                    {item.name}
+                                    {item.nome}
                                 </td>
                                 <td>
                                     {item.email}
