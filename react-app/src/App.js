@@ -1,61 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
-import List from './List';
+import { Link, Route } from 'react-router-dom'
+import routesConfig from './routesConfig';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: "Renata",
-      email: "renata@gmail.com"
-    }
-    this.changeState = this.changeState.bind(this)
-    this.resetState = this.resetState.bind(this)
-    this.changeInput = this.changeInput.bind(this)
-
-  }
-
-  changeState() {
-    this.setState({
-      name: "Renata Chagas"
-    })
-  }
-  changeInput(event) {
-    let target = event.target
-    let index = target.name
-    this.setState({
-      [index]: target.value
-    })
-  }
-
-  resetState() {
-    this.setState({
-      name: "Renata"
-    })
-  }
   render() {
     return (
-      <div className="App">
-        <div>
-          <form>
-            <label>Nome</label>
-            <input type="text" name="name" 
-            value={this.state.name}
-            onChange={this.changeInput}></input>
-
-            <label>email</label>
-            <input type="email" name="email" 
-            value={this.state.email}
-            onChange={this.changeInput}></input>
-          </form>
-          {this.state.name} - {this.state.email}
+      <div>
+        <div className="App">
+          <Link to="/">Home</Link>
+          <Link to="/user">User</Link>
         </div>
-        <div>
-          <button onClick={this.changeState}>Mudar estado</button>
-          <button onClick={this.resetState}>resetar estado</button>
-          </div>
-        <List></List>
+        {routesConfig.map((value, key) => {
+          return <Route
+            key={key}
+            path={value.path}
+            component={value.component}
+            exact={value.exact}
+          ></Route>
+        })}
       </div>
     );
   }
